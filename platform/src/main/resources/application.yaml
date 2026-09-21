@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: platform
+  config:
+    # .env z katalogu głównego jako źródło properties (bootRun ma cwd = platform/)
+    import: optional:file:../.env[.properties]
+  docker:
+    compose:
+      file: ../docker-compose.yaml
+  datasource:
+    url: jdbc:postgresql://localhost:${POSTGRES_PORT:5432}/${POSTGRES_DB:coworker}
+    username: ${POSTGRES_USER:coworker}
+    password: ${POSTGRES_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: platform
+  flyway:
+    schemas: platform
+    default-schema: platform
+  threads:
+    virtual:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

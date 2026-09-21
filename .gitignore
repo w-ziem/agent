@@ -1,0 +1,33 @@
+# sekrety
+.env
+.env.*
+!.env.example
+
+# materiały starszych roczników: nigdy w repo
+materials/*
+!materials/.gitkeep
+
+# Java / Gradle / IntelliJ
+**/build/
+**/.gradle/
+**/.idea/
+*.iml
+**/out/
+
+# Python
+**/__pycache__/
+**/.venv/
+*.pyc
+**/.pytest_cache/
+**/.mypy_cache/
+
+#agents setup
+agents/
+CLAUDE.md
+
+# worker: katalogi robocze zadań
+worker/workspaces/
+
+# system
+.DS_Store
+Thumbs.db
