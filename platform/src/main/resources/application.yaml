@@ -2,7 +2,6 @@ spring:
   application:
     name: platform
   config:
-    # .env z katalogu głównego jako źródło properties (bootRun ma cwd = platform/)
     import: optional:file:../.env[.properties]
   docker:
     compose:
@@ -23,10 +22,16 @@ spring:
     default-schema: platform
   threads:
     virtual:
-      enabled: true
+      enabled: true #vitual thread for LongPolling telegram bot
 
 management:
   endpoints:
     web:
       exposure:
         include: health
+
+
+telegram:
+  base-url: https://api.telegram.org/bot
+  api-token: ${TELEGRAM_BOT_TOKEN}
+  allowed-chat-id: ${TELEGRAM_ALLOWED_CHAT_ID}
