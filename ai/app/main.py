@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.errors import AppError, ErrorCategory
-from app.routers import health
+from app.routers import answer, health
 
 logger = logging.getLogger(__name__)
 
@@ -81,6 +81,7 @@ def create_app() -> FastAPI:
         )
 
     app.include_router(health.router)
+    app.include_router(answer.router)
     return app
 
 
